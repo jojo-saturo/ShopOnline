@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid">
       <div className="row">
-        <div className="col-12 bg-primary d-flex justify-content-between px-5">
-          <ul className="d-flex gap-5 aling-items-center m-0 p-0 py-3">
+        <div className="navbar-theme col-12 d-flex justify-content-between px-3">
+          <ul className="d-flex gap-4 align-items-center m-0 p-0 py-3">
             <NavLink
               to="/"
               className="list-unstyled text-light p-0 pointer text-decoration-none"
@@ -19,7 +19,7 @@ const Header = () => {
           <ul className="m-0 p-0 py-3">
             <NavLink
               to="/cart"
-              className="list-unstyled text-light p-0 pointer"
+              className="list-unstyled text-light p-0 pointer "
             >
               <i className="fa-solid fa-cart-shopping fs-3"></i>
             </NavLink>
