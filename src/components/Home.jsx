@@ -1,4 +1,5 @@
 import React from "react";
+import productList from "./data";
 
 const Home = () => {
   const data = {
@@ -20,25 +21,31 @@ const Home = () => {
   };
   return (
     <div className="container-fluid px-3">
-      <div className="row">
-        <div className="col-2 border rounded mt-2">
-          <div className="d-flex justify-content-center p-2">
-            <img src={data?.img} alt="" className="product-size" />
-          </div>
-          <div className="py-2">
-            <div className="d-flex justify-content-between px-1">
-              <p className="m-0 font-bold">{data?.brand}</p>
-              <p className="m-0 font-bold">{data?.model}</p>
-            </div>
-            <div className="px-1">
-              <p className="m-0 "><span className="font-bold">₦</span>{data?.price}</p>
-              <p className="m-0 text-hiding">{data?.quantity}</p>
-            </div>
-            <div className="px-2">
-              <button className="btn btn-theme p-1 w-100">Add to cart</button>
-            </div>
-          </div>
-        </div>
+      <div className="row gap-4 justify-content-center">
+        {
+          productList?.map((product, index) => {
+            return (
+              <div className="col-2 border rounded mt-2">
+                <div className="d-flex justify-content-center p-2">
+                  <img src={product?.img} alt="" className="product-size" />
+                </div>
+                <div className="py-2">
+                  <div className="d-flex justify-content-between px-1">
+                    <p className="m-0 font-bold">{product?.brand}</p>
+                    <p className="m-0 font-bold">{product?.model}</p>
+                  </div>
+                  <div className="px-1">
+                    <p className="m-0 "><span className="font-bold">₦</span>{product?.price}</p>
+                    <p className="m-0 text-hiding">{product?.quantity}</p>
+                  </div>
+                  <div className="px-2">
+                    <button className="btn btn-theme p-1 w-100">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   );
