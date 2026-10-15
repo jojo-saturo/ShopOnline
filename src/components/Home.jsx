@@ -7,38 +7,47 @@ const Home = ({ setProductId }) => {
   };
 
   return (
-    <div className="container-fluid px-5">
-      <div className="row gap-4 justify-content-center">
-        {productList?.map((product, index) => {
-          return (
-            <div className="col-2 border rounded mt-2" key={product?.id}>
-              <div className="d-flex justify-content-center p-2">
-                <img src={product?.img} alt="" className="product-size" />
+    <div className="container-fluid px-3 px-md-4 py-4">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h5 className="fw-bold m-0">Recommended for you</h5>
+      </div>
+
+      <div className="row g-3">
+        {productList?.map((product) => (
+          <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={product?.id}>
+            <div className="card product-card h-100 border-0 shadow-sm">
+              <div className="product-image-wrapper">
+                <img
+                  src={product?.img}
+                  alt={`${product?.brand} ${product?.model}`}
+                  className="product-size"
+                  loading="lazy"
+                />
               </div>
-              <div className="py-2">
-                <div className="d-flex justify-content-between px-2">
-                  <p className="m-0 font-bold font-size-12">{product?.brand}</p>
-                  <p className="m-0 font-bold font-size-12">{product?.model}</p>
-                </div>
-                <div className="px-2">
-                  <p className="m-0 ">
-                    <span className="font-bold">₦</span>
-                    {product?.price}
-                  </p>
-                  <p className="m-0 text-hiding">{product?.quantity}</p>
-                </div>
-                <div className="px-2">
-                  <button
-                    className="btn btn-theme p-1 w-100"
-                    onClick={() => handleAddToCart(product?.id)}
-                  >
-                    Add to cart
-                  </button>
-                </div>
+
+              <div className="card-body p-2">
+                <p className="text-muted small mb-1">{product?.brand}</p>
+
+                <h6 className="product-title mb-2">{product?.model}</h6>
+
+                <p className="product-price fw-bold mb-1">
+                  ₦{Number(product?.price).toLocaleString("en-NG")}
+                </p>
+
+                <p className="product-description text-muted small mb-3">
+                  {product?.quantity}
+                </p>
+
+                <button
+                  className="btn btn-theme btn-sm w-100"
+                  onClick={() => handleAddToCart(product?.id)}
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
