@@ -8,9 +8,10 @@ const Pagination = ({
   handleNext,
 }) => {
   return (
-    <nav className="d-flex justify-content-center mt-4 mb-4 aria-label=Product pagination">
-      <ul className="pagination flex-nowrap justify-content-center mb-o">
-        <li className={`page-items $ {currentPage === 1 ? "disabled" : ""}`}>
+    <nav className="d-flex justify-content-center mt-4 mb-4"
+    aria-label="Product pagination">
+      <ul className="pagination flex-nowrap justify-content-center mb-0">
+        <li className={`page-item $ {currentPage === 1 ? "disabled" : ""}`}>
           <button
             className="page-link"
             onClick={handlePrevious}
