@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import productList from "./data";
 import Pagination from "./Pagination";
+import useCartStore from "../store/cartStore";
 
-const Home = ({ setProductId }) => {
+const Home = () => {
+  const addToCart = useCartStore((state) => state.addToCart);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
   const totalPages = Math.ceil(productList.length / productsPerPage);
@@ -20,7 +22,11 @@ const Home = ({ setProductId }) => {
   };
 
   const handleAddToCart = (id) => {
-    setProductId(id);
+    const product = productList.find((item) => item.id === id);
+
+    if (product) {
+      addToCart(product);
+    }
   };
 
   return (

@@ -1,69 +1,75 @@
 import React from "react";
+import useCartStore from "../store/cartStore";
 
-const Cart = ({ cartAllProduct, setCartAllProduct }) => {
-  console.log("cartAllProduct", cartAllProduct);
+const Cart = () => {
+  const { cartAllProduct, handleDecrement, handleIncrement, handleDeleteItem } =
+    useCartStore();
 
-  const handleDecrement = () => {};
-  const handleIncrement = () => {};
-  const handleDeleteItem = () => {};
   return (
     <div className="container-fluid">
       <div className="row p-3 gap-3">
-        {cartAllProduct?.map((product) => {
-          return (
-            <div key={product.id} className="col-8 border rounded d-flex gap-3">
-              <div className="p-1">
-                <img
-                  src={product?.img}
-                  alt={product?.model}
-                  className="cart-product-size"
-                />
-              </div>
-              <div className="p-1">
-                <div>
-                  <h3 className="text-hiding m-0">
-                    {product?.model?.toUpperCase()}
-                  </h3>
-                  <p className="m-0 fs-5">
-                    <span className="font-bold">₦</span>
-                    {product?.price}
-                  </p>
-                  <p className="m-0 font-size-12 font-bold">
-                    {product?.longetivity}
-                  </p>
-                  <p className="m-0 font-size-12 font-bold">
-                    {product?.quantity}
-                  </p>
-                  <div>
-                    <p
-                      className="m-0 fs-4 border p-0 px-2 py-1 rounded pointer"
-                      onClick={handleDecrement}
-                    >
-                      -
-                    </p>
-                    <p className="m-0 fs-4">{product?.count}</p>
-                    <p
-                      className="m-0 fs-4 border p-0 px-2 py-1 rounded pionter"
-                      onClick={handleIncrement}
-                    >
-                      +
-                    </p>
-                  </div>
-                </div>
+        {cartAllProduct?.map((product) => (
+          <div key={product.id} className="col-8 border rounded d-flex gap-3">
+            <div className="p-1">
+              <img
+                src={product?.img}
+                alt={product?.model}
+                className="cart-product-size"
+              />
+            </div>
 
-                <div>
-                  <p>{product?.description}</p>
-                  <p onClick={handleDeleteItem}>
-                    <i
-                      className="fa-solid fa-trash"
-                      style={{ color: "rgb(255, 212, 59)" }}
-                    ></i>
-                  </p>
+            <div className="p-1">
+              <div>
+                <h3 className="text-hiding m-0">
+                  {product?.model?.toUpperCase()}
+                </h3>
+
+                <p className="m-0 fs-5">
+                  <span className="font-bold">₦</span>
+                  {product?.price}
+                </p>
+
+                <p className="m-0 font-size-12 font-bold">
+                  {product?.longetivity}
+                </p>
+
+                <div className="d-flex align-items-center gap-2">
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => handleDecrement(product.id)}
+                  >
+                    -
+                  </button>
+
+                  <span className="fs-4">{product?.count || 1}</span>
+
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => handleIncrement(product.id)}
+                  >
+                    +
+                  </button>
                 </div>
+              </div>
+
+              <div>
+                <p>{product?.description}</p>
+
+                <button
+                  type="button"
+                  className="btn p-0"
+                  aria-label={`Delete ${product?.model}`}
+                  onClick={() => handleDeleteItem(product.id)}
+                >
+                  <i
+                    className="fa-solid fa-trash"
+                    style={{ color: "rgb(255, 212, 59)" }}
+                  />
+                </button>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
