@@ -112,4 +112,13 @@ body {
   .product-price {
     font-size: 0.9rem;
   }
+
+  .pagination {
+    gap: 2px;
+  }
+
+  .pagination .page-link {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8rem;
+  }
 }

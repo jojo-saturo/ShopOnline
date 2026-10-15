@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import productList from "./data";
+import Pagination from "./Pagination";
 
 const Home = ({ setProductId }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
+  const totalPages = Math.ceil(productList.length / productsPerPage);
+
+  const indexOfLastPage = currentPage * productsPerPage;
+  const indexOfFirstPage = indexOfLastPage - productsPerPage;
+  const currentProducts = productList.slice(indexOfFirstPage, indexOfLastPage);
+
+  const handlePrevious = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
   const handleAddToCart = (id) => {
     setProductId(id);
   };
@@ -12,9 +29,12 @@ const Home = ({ setProductId }) => {
         <h5 className="fw-bold m-0">Recommended for you</h5>
       </div>
 
-      <div className="row g-3">
-        {productList?.map((product) => (
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={product?.id}>
+      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
+        {currentProducts.map((product) => (
+          <div
+            className="col-6 col-sm-4 col-md-3 col-lg-custom"
+            key={product?.id}
+          >
             <div className="card product-card h-100 border-0 shadow-sm">
               <div className="product-image-wrapper">
                 <img
@@ -49,6 +69,13 @@ const Home = ({ setProductId }) => {
           </div>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+        handlePrevious={handlePrevious}
+        handleNext={handleNext}
+      />
     </div>
   );
 };

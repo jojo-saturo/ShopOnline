@@ -10,19 +10,12 @@ function App() {
   const [productId, setProductId] = useState("");
   const [cartAllProduct, setCartAllProduct] = useState([]);
 
-  //const [currentPage, setCurrentPage] = useState(1);
-  //const [postsPerPage, setPostPerPage] = useState(8);
-
   useEffect(() => {
     const filteredObject = productList.filter(
       (product) => product.id == productId,
     );
     setCartAllProduct([...cartAllProduct, ...filteredObject]);
   }, [productId]);
-
-  //const lastPostIndex = currentPage * postsPerPage;
-  //const firstPostIndex = lastPostIndex - postsPerPage;
-  //const currentPosts = perfumesData.slice(firstPostIndex, lastPostIndex);
 
   return (
     <>
