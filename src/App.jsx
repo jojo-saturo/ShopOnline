@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
+import BottomNav from "./components/BottomNav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -22,11 +23,8 @@ function App() {
   return (
     <BrowserRouter>
       <Header
-        navLinks={[
-          { label: "HOME", to: "/" },
-          { label: "ABOUT", to: "/about" },
-          { label: "CONTACT", to: "/contact" },
-        ]}
+        brand="TheScentMall"
+        navLinks={[]}
         showCart={true}
         className="shop-header"
         theme={theme}
@@ -37,6 +35,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+
+      <BottomNav />
     </BrowserRouter>
   );
 }
