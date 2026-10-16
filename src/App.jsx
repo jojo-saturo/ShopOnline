@@ -8,7 +8,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Header
+        navLinks={[
+          { label: "HOME", to: "/" },
+          { label: "ABOUT", to: "/about" },
+          { label: "CONTACT", to: "/contact" },
+        ]}
+        showCart={true}
+        className="shop-header"
+      />
 
       <Routes>
         <Route path="/" element={<Home />} />
