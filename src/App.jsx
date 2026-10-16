@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -6,6 +6,19 @@ import Cart from "./components/Cart";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "dark",
+  );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((current) => (current === "dark" ? "light" : "dark"));
+  };
+
   return (
     <BrowserRouter>
       <Header
@@ -16,6 +29,8 @@ function App() {
         ]}
         showCart={true}
         className="shop-header"
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <Routes>
