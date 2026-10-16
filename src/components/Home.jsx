@@ -63,7 +63,7 @@ const Home = () => {
           <div className="row g-3 product-grid" aria-live="polite">
             {currentProducts.map((product) => (
               <div
-                className="col-6 col-sm-4 col-md-3 col-lg-custom"
+                className="col-6 col-sm-4 col-md-3 col-lg"
                 key={product?.id}
               >
                 <div className="card product-card h-100 border-0 shadow-sm">

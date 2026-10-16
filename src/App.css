@@ -759,3 +759,11 @@ body {
   color: var(--muted-color);
   font-size: 14px;
 }
+
+/* Desktop: 5 products per row */
+@media (min-width: 992px) {
+  .product-grid > .col-lg {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
