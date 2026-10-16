@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import productList from "./data";
+import SearchBar from "./SearchBar";
 import Pagination from "./Pagination";
 import useCartStore from "../store/cartStore";
 
@@ -29,12 +30,11 @@ const Home = () => {
     }
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="container-fluid px-3 px-md-4 py-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h5 className="fw-bold m-0">Recommended for you</h5>
-      </div>
-
+      <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
         {currentProducts.map((product) => (
           <div
