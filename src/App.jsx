@@ -23,7 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header
-        brand="TheScentMall"
+        brand="ShopOnline"
         navLinks={[]}
         showCart={true}
         className="shop-header"
