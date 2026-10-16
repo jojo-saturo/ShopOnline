@@ -767,3 +767,12 @@ body {
     max-width: 20%;
   }
 }
+
+.product-brand {
+  color: var(--muted-color);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .product-brand {
+  color: #e5c780;
+}

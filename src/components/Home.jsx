@@ -77,7 +77,7 @@ const Home = () => {
                   </div>
 
                   <div className="card-body p-2">
-                    <p className="text-muted small mb-1">{product?.brand}</p>
+                    <p className="product-brand small mb-1">{product?.brand}</p>
 
                     <h6 className="product-title mb-2">{product?.model}</h6>
 
